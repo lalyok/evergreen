@@ -78,12 +78,9 @@
   "TRANSPARENT_GREEN_GRASS": "rgba(104, 137, 44, 0.7)",
   "WHITE_70": "rgba(251, 251, 251, 0.7)",
   "PALE_GREEN_70": "rgba(231, 255, 200, 0.7)",
-  "TXT_WHITE_TXT": "rgb(251, 251, 251)",
-  "TXT_SUPER_PALE_GREEN_TXT": "rgb(231, 255, 200)",
-  "TXT_GRASS_GREEN_TXT": "rgb(104, 137, 44)",
+  "TXT_SUPER_PALE_GREEN": "rgb(231, 255, 200)",
   "TXT_DARK_GREEN_TXT": "rgb(42, 60, 11)",
-  "TXT_PINK_TXT": "rgb(234, 76, 126)",
-  "TXT_DARK_PINK_TXT": "rgb(216, 28, 88)"
+  "DARK_PINK": "rgb(216, 28, 88)"
 }
 - Шрифты: Montserrat. Заголовки: Bold, Semibold, Medium. Тело: Medium, Regular
 - Layout grid: desktop 12 columns (74px), gap 30px  

@@ -1,28 +1,21 @@
 <?php
-/**
- * Main index file for Evergreen theme.
- * Minimal template so WordPress can activate the theme.
+/*
+Template Name: main
  */
 
 get_header();
 ?>
 
-  <section class="site-content">
-    <div class="container">
-      <?php if ( have_posts() ) : ?>
-        <?php while ( have_posts() ) : the_post(); ?>
-          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-            <div class="entry-content">
-              <?php the_content(); ?>
-            </div>
-          </article>
-        <?php endwhile; ?>
-      <?php else : ?>
-        <p><?php esc_html_e( 'Записей не найдено.', 'evergreen' ); ?></p>
-      <?php endif; ?>
-    </div>
-  </section>
+  <main class="front-page" role="main">
+    <?php get_template_part( 'parts/hero' ); ?>
+    <?php get_template_part( 'parts/services' ); ?>
+    <?php get_template_part( 'parts/why-us' ); ?>
+    <?php get_template_part( 'parts/how-we-work' ); ?>
+    <?php get_template_part( 'parts/partners' ); ?>
+    <?php get_template_part( 'parts/before-after' ); ?>
+    <?php get_template_part( 'parts/testimonials' ); ?>
+    <?php get_template_part( 'parts/contact-form' ); ?>
+  </main>
 
 <?php
 get_footer();
