@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // centeredSlides: true,
     // centeredSlidesBounds: true,
     navigation: {
-      nextEl: '.services-next',
-      prevEl: '.services-prev',
+      nextEl: '.services__slider-next',
+      prevEl: '.services__slider-prev',
     },
     observer: true,
     observeParents: true,

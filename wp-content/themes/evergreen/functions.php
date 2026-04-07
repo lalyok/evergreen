@@ -44,5 +44,11 @@ function evergreen_enqueue_assets() {
 
   // Init script for services slider (depends on swiper and main)
   wp_enqueue_script( 'evergreen-services-swiper', get_template_directory_uri() . '/assets/js/services-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
+  
+  // Init script for before/after slider
+  wp_enqueue_script( 'evergreen-before-after-swiper', get_template_directory_uri() . '/assets/js/before-after-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
+
+  wp_enqueue_script( 'evergreen-testimonials-swiper', get_template_directory_uri() . '/assets/js/testimonials-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
 }
+
 add_action( 'wp_enqueue_scripts', 'evergreen_enqueue_assets' );

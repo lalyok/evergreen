@@ -3,11 +3,11 @@
     <div class="section__title-wrapper">
       <h2 class="section__title">Наши услуги</h2>
     </div>
-    <div class="services__slider">
-      <button class="services-prev" aria-label="Previous slide">
-        <svg class="services-prev-icon" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="37" cy="37" r="35" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 7.62939e-06 74)" stroke="CurrentColor"/>
-        <path d="M44 16L20 37L44 58" stroke-linecap="round" stroke-linejoin="round" stroke="CurrentColor"/>
+    <div class="slider services__slider">
+      <button class="slider-prev services__slider-prev" aria-label="Previous slide">
+        <svg class="slider-prev-icon" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="37" cy="37" r="35" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 7.62939e-06 74)" stroke="currentColor"/>
+        <path d="M44 16L20 37L44 58" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/>
         </svg>
       </button>
   
@@ -54,10 +54,10 @@
         <!-- Swiper navigation -->
         
       </div>
-      <button class="services-next" aria-label="Next slide">
-        <svg class="services-next-icon" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="37" cy="37" r="35" transform="rotate(-180 37 37)" stroke="CurrentColor"/>
-        <path d="M30 16L54 37L30 58" stroke-linecap="round" stroke-linejoin="round" stroke="CurrentColor"/>
+      <button class="slider-next services__slider-next" aria-label="Next slide">
+        <svg class="slider-next-icon" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="37" cy="37" r="35" transform="rotate(-180 37 37)" stroke="currentColor"/>
+        <path d="M30 16L54 37L30 58" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/>
         </svg>
 
       </button>

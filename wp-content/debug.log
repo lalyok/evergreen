@@ -1,0 +1,13 @@
+[07-Apr-2026 19:23:00 UTC] PHP Fatal error:  Uncaught TypeError: ltrim(): Argument #1 ($string) must be of type string, array given in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php:4496
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php(4496): ltrim(Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/parts/testimonials.php(47): esc_url(Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template.php(816): require('/Applications/X...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template.php(749): load_template('/Applications/X...', false, Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/general-template.php(206): locate_template(Array, true, false, Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/index.php(16): get_template_part('parts/testimoni...')
+#6 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template-loader.php(132): include('/Applications/X...')
+#7 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-blog-header.php(19): require_once('/Applications/X...')
+#8 /Applications/XAMPP/xamppfiles/htdocs/evergreen/index.php(17): require('/Applications/X...')
+#9 {main}
+  thrown in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php on line 4496
