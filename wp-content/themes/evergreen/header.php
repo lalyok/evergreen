@@ -29,7 +29,7 @@
       </nav>
 
       <div class="header-actions">
-        <a class="contact-button" href="#contact">Связаться</a>
+        <a class="button contact-button" href="#contact">Связаться</a>
       </div>
     </div>
   </header>

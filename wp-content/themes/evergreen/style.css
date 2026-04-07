@@ -15,6 +15,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: #fbfbfb;
+  height: 100%;
 }
 
 .site-header, .site-footer {

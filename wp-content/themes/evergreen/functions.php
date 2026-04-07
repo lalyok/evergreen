@@ -33,7 +33,16 @@ function evergreen_enqueue_assets() {
   // Additional compiled/site CSS
   wp_enqueue_style( 'evergreen-main', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version );
 
+  // Swiper (CSS + JS) from CDN
+  wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', array(), '9.0' );
+
   // Main JS
   wp_enqueue_script( 'evergreen-main', get_template_directory_uri() . '/assets/js/main.js', array(), $theme_version, true );
+
+  // Swiper JS
+  wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.js', array(), '9.0', true );
+
+  // Init script for services slider (depends on swiper and main)
+  wp_enqueue_script( 'evergreen-services-swiper', get_template_directory_uri() . '/assets/js/services-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
 }
 add_action( 'wp_enqueue_scripts', 'evergreen_enqueue_assets' );
