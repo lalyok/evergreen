@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="slider testimonials__slider">
+    <div class="testimonials__bg" aria-hidden="true"></div>
     <div class="container">
       <button class="slider-prev testimonials__slider-prev" aria-label="Предыдущий слайд">
         <svg class="slider-prev-icon" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +37,12 @@
             setup_postdata( $feedback );
             ?>
   
-            <div class="swiper-slide">
+            <?php
+            // prepare thumbnail for background: use full size if available
+            $thumb = get_the_post_thumbnail_url( $feedback->ID, 'full' );
+            $bg_attr = $thumb ? ' data-bg="' . esc_url( $thumb ) . '"' : '';
+            ?>
+            <div class="swiper-slide"<?php echo $bg_attr; ?>>
               <div class="feedback-card">
                 <div class="feedback-card__text">
                   <p><?php echo esc_html( get_field( 'feedback-text', $feedback->ID ) ); ?></p>

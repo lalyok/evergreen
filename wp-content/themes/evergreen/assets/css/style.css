@@ -485,6 +485,37 @@ a:focus {
   border-radius: 30px;
 }
 
+/* Testimonials full-width background behind centered container */
+.testimonials {
+  position: relative;
+  overflow: visible;
+}
+.testimonials__bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity .45s ease, transform .45s ease;
+  transform: scale(1.02);
+}
+.testimonials__bg.is-set { opacity: 1; }
+.testimonials__slider .container { position: relative; z-index: 2; }
+
+/* optional dark overlay to improve text contrast */
+.testimonials__bg::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .before-after__photo-wrapper {
     height: 420px;
