@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', function () {
       nextEl: '.testimonials__slider-next',
       prevEl: '.testimonials__slider-prev',
     },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + "</span>";
+        },
+      },
     observer: true,
     observeParents: true,
   });
