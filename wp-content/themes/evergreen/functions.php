@@ -52,3 +52,48 @@ function evergreen_enqueue_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', 'evergreen_enqueue_assets' );
+
+/**
+ * Register secondary logo in Customizer and helper functions
+ */
+function evergreen_customize_register( $wp_customize ) {
+  $wp_customize->add_setting( 'secondary_logo', array(
+    'sanitize_callback' => 'absint',
+  ) );
+
+  $wp_customize->add_control( new WP_Customize_Media_Control(
+    $wp_customize,
+    'secondary_logo',
+    array(
+      'label'    => __( 'Secondary logo', 'evergreen' ),
+      'section'  => 'title_tagline',
+      'mime_type'=> 'image',
+    )
+  ) );
+}
+add_action( 'customize_register', 'evergreen_customize_register' );
+
+if ( ! function_exists( 'get_custom_logo_secondary_url' ) ) {
+  function get_custom_logo_secondary_url() {
+    $id = get_theme_mod( 'secondary_logo' );
+    return $id ? wp_get_attachment_image_url( $id, 'full' ) : '';
+  }
+}
+
+if ( ! function_exists( 'the_custom_logo_secondary' ) ) {
+  function the_custom_logo_secondary( $size = 'full', $args = array() ) {
+    $id = get_theme_mod( 'secondary_logo' );
+    if ( ! $id ) {
+      return;
+    }
+    $defaults = array( 'class' => 'custom-logo-secondary' );
+    $args = wp_parse_args( $args, $defaults );
+    echo wp_get_attachment_image( $id, $size, false, $args );
+  }
+}
+
+if ( ! function_exists( 'has_secondary_logo' ) ) {
+  function has_secondary_logo() {
+    return (bool) get_theme_mod( 'secondary_logo' );
+  }
+}
