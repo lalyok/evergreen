@@ -35,3 +35,4 @@
   </header>
 
   <main id="main" class="site-main">
+    <?php get_template_part( 'parts/modal-contact-form' ); ?>

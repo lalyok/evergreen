@@ -1,4 +1,4 @@
-<section class="section section--extra-padding testimonials" aria-label="Отзывы наших клиентов">
+<section class="section testimonials" aria-label="Отзывы наших клиентов">
   <div class="container">
     <div class="section__title-wrapper">
       <h2 class="section__title">Отзывы наших клиентов</h2>
