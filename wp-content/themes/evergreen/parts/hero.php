@@ -7,7 +7,7 @@ $bg = get_field('hero_bg');
 ?>
 
 <section class="section hero" style="background-image: url('<?php echo esc_url($bg['url']); ?>')">
-    <div class="container">
+    <div class="container hero__container">
         <div class="hero__content">
             <h1 class="hero__title"><?php echo esc_html($title); ?></h1>
 

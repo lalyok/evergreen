@@ -104,4 +104,44 @@
       a.textContent = formatted;
     });
   });
+
+  /* Responsive burger menu behavior
+     - add 'js' class to <html> so CSS can hide inline nav on small screens
+     - toggle mobile menu open/close
+  */
+  document.addEventListener('DOMContentLoaded', function(){
+    document.documentElement.classList.add('js');
+    var burger = document.querySelector('.burger-toggle');
+    var menu = document.getElementById('site-navigation');
+    if (!burger || !menu) return;
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      burger.classList.add('is-active');
+      menu.setAttribute('aria-hidden', 'false');
+      burger.setAttribute('aria-expanded', 'true');
+      // focus first link
+      var firstLink = menu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      burger.classList.remove('is-active');
+      menu.setAttribute('aria-hidden', 'true');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.focus();
+    }
+
+    burger.addEventListener('click', function(e){
+      var isOpen = menu.classList.contains('is-open');
+      if (isOpen) closeMenu(); else openMenu();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  });
 })();

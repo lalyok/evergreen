@@ -35,11 +35,13 @@
             ?>
   
             <div class="swiper-slide">
-              <div class="service-card">
-                <a class="service-card__link" href="<?php echo esc_url( get_permalink( $service->ID ) ); ?>">
-                  <img class="service-card__image" src="<?php echo esc_url(get_the_post_thumbnail_url( $service -> ID)) ?>" alt="<?php echo esc_attr( get_the_title( $service->ID ) ); ?>">
-                  <h3 class="service-card__title"><?php echo esc_html( get_the_title( $service->ID ) ); ?></h3>
-                </a>
+              <div class="slide-wrapper">
+                <div class="service-card">
+                  <a class="service-card__link" href="<?php echo esc_url( get_permalink( $service->ID ) ); ?>">
+                    <img class="service-card__image" src="<?php echo esc_url(get_the_post_thumbnail_url( $service -> ID)) ?>" alt="<?php echo esc_attr( get_the_title( $service->ID ) ); ?>">
+                    <h3 class="service-card__title"><?php echo esc_html( get_the_title( $service->ID ) ); ?></h3>
+                  </a>
+                </div>
               </div>
             </div>
   

@@ -10,28 +10,54 @@
 <body <?php body_class(); ?>>
   <header class="site-header" role="banner">
     <div class="container">
-      <div class="site-branding">
-      <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
-        <?php the_custom_logo(); ?>
-      <?php else : ?>
-        <a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-      <?php endif; ?>
-    </div>
+      <div class="site-header-wrapper">
+        <div class="site-branding">
+          <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
+            <?php the_custom_logo(); ?>
+          <?php else : ?>
+            <a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+          <?php endif; ?>
+        </div>
+  
+        <nav class="main-navigation" id="site-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'evergreen' ); ?>">
+          <?php
+            wp_nav_menu( array(
+              'theme_location' => 'primary',
+              'container' => false,
+              'menu_id' => 'primary-menu',
+            ) );
+          ?>
+        </nav>
 
-    <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'evergreen' ); ?>">
-      <?php
-        wp_nav_menu( array(
-          'theme_location' => 'primary',
-          'container' => false,
-          'menu_id' => 'primary-menu',
-        ) );
-      ?>
-      </nav>
-
-      <div class="header-actions">
-        <a class="button button--small" href="#contact">Связаться</a>
+        <div class="header-actions">
+          <a class="button button--small" href="#contact">Связаться</a>
+          <div class="burger-toggle-wrapper">
+            <button class="burger-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <!-- <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="container">
+        <div class="mobile-menu__inner">
+          <button class="modal__close-button mobile-menu__close" aria-label="Закрыть меню"></button>
+            <nav id="site-navigation-mobile" class="main-navigation main-navigation--mobile" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'evergreen' ); ?>">
+              <?php
+                wp_nav_menu( array(
+                  'theme_location' => 'primary',
+                  'container' => false,
+                  'menu_class' => 'mobile-menu__list',
+                ) );
+              ?>
+            </nav>
+        </div>
+      </div>
+    </div> -->
   </header>
 
   <main id="main" class="site-main">
