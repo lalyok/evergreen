@@ -13,16 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
     observer: true,
     observeParents: true,
     breakpoints: {
-        769: {
+        1025: {
             spaceBetween: 30,
             slidesPerView: 3,
         },
-        480: {
+        681: {
             slidesPerView: 2,
             spaceBetween: 20,
         },
         0: {
-            slidesPerView: 1,
+            slidesPerView: "auto",
+            navigation: false,
         }
     }
   });

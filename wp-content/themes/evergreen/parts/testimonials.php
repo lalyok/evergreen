@@ -15,7 +15,7 @@
       </button>
   
       <div class="swiper">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper testimonials__slider-wrapper">
   
         <?php
           $feedbacks = get_posts( array(

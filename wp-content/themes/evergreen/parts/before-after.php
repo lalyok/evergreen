@@ -33,14 +33,14 @@
           foreach( $photos as $photo ){
             setup_postdata( $photo );
             ?>
-  
-            <div class="swiper-slide">
+
+            <div class="swiper-slide before-after__slides-wrapper">
               <div class="before-after__photo-wrapper">
                 <img class="before-after__photo" src="<?php echo esc_url(get_field( 'before-photo', $photo -> ID)['url']); ?>" alt="<?php echo esc_attr(get_field( 'before-photo', $photo -> ID)['alt']); ?>">
               </div>
-            </div>
 
-            <div class="swiper-slide">
+              <div class="before-after__arrow"></div>
+
               <div class="before-after__photo-wrapper">
                 <img class="before-after__photo" src="<?php echo esc_url(get_field( 'after-photo', $photo -> ID)['url']); ?>" alt="<?php echo esc_attr(get_field( 'after-photo', $photo -> ID)['alt']); ?>">
               </div>
@@ -53,6 +53,8 @@
   
         ?>
         </div>
+
+        <div class="swiper-pagination"></div>
   
         <!-- Swiper navigation -->
         
