@@ -33,7 +33,9 @@
                       <a class="site-title brand-info__title" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
                     <?php endif; ?>
         
-                    <p class="brand-info__description"><?php echo esc_html( get_field( 'contacts-brand-description', $contact->ID ) ); ?></p>
+                    <div class="brand-info__description">
+                      <?php echo get_field( 'contacts-brand-description', $contact->ID ); ?>
+                    </div>
                   </div>
   
                   <a href="/privacy-policy" class="brand-info__link">Политика конфиденциальности</a>
