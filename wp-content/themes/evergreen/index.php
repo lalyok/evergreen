@@ -5,8 +5,12 @@ Template Name: main
 
 get_header();
 ?>
-    <?php get_template_part( 'parts/hero' ); ?>
-    <?php get_template_part( 'parts/services' ); ?>
+    <?php
+        if (get_field('hero_title')) {
+            get_template_part( 'parts/hero-main' ); 
+        }
+    ?>
+    <?php get_template_part( 'parts/services-slider' ); ?>
     <?php get_template_part( 'parts/why-us' ); ?>
     <?php get_template_part( 'parts/how-we-work' ); ?>
     <?php get_template_part( 'parts/partners' ); ?>
@@ -16,3 +20,4 @@ get_header();
 
 <?php
 get_footer();
+?>

@@ -33,8 +33,20 @@
 }
 
 /* Better box-sizing model for predictable sizing */
-html { box-sizing: border-box; }
-*, *::before, *::after { box-sizing: inherit; }
+html { 
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*, *::before, *::after { 
+  box-sizing: inherit; 
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
 /* Global typography: Montserrat as base font */
 html, body, input, button, textarea, select {
@@ -104,6 +116,7 @@ a:focus {
 
 #main.site-main {
   margin-top: 80px;
+  flex-grow: 1;
 }
 
 @media (max-width: 680px) {
@@ -294,6 +307,12 @@ a:focus {
     outline var(--transition-fast) ease;
 }
 
+@media (max-width: 680px) {
+  .button {
+    font-size: 1em;
+  }
+}
+
 .button:active {
   outline: 3px solid var(--extra-dark-pink);
 }
@@ -302,6 +321,29 @@ a:focus {
 .button:focus {
   background: var(--dark-pink);
   color: var(--white);
+}
+
+.button--outline {
+  background: var(--white-translucent);
+  backdrop-filter: blur(5px);
+  color: var(--pink);
+  border: 3px solid var(--pink);
+}
+
+.button--outline:active {
+  background: var(--white-translucent);
+  backdrop-filter: blur(5px);
+  outline: none;
+  color: var(--extra-dark-pink);
+  border-color: var(--extra-dark-pink);
+}
+
+.button--outline:hover,
+.button--outline:focus {
+  background: var(--white-translucent);
+  backdrop-filter: blur(5px);
+  color: var(--dark-pink);
+  border-color: var(--dark-pink);
 }
 
 
@@ -353,7 +395,8 @@ a:focus {
   color: var(--white);
 }
 
-.hero {
+.hero,
+.hero-main {
   min-height: calc(100vh - 80px);
   background-size: cover;
   background-repeat: no-repeat;
@@ -366,9 +409,18 @@ a:focus {
   justify-content: start;
 }
 
+.hero {
+  align-items: start;
+}
+
 @media (max-width: 1024px) {
-  .hero {
+  .hero,
+  .hero-main {
     min-height: auto;
+  }
+
+  .hero {
+    padding-bottom: 16em;
   }
 }
 
@@ -376,55 +428,83 @@ a:focus {
   width: 100%;
 }
 
+.hero-main__container {
+  width: 75vw;
+}
+
 .hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 5em;
+}
+
+.hero-main__content {
   max-width: 35em;
   padding-left: 5em;
 }
 
 @media (max-width: 1024px) {
-  .hero__content {
+  .hero-main__content {
     max-width: 28em;
-    padding-left: 3em;
+    padding-left: 0;
+  }
+
+  .hero__content {
+    padding: 0 3em;
   }
 }
 
 @media (max-width: 680px) {
-  .hero__container {
+  .hero__container,
+  .hero-main__container {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
-  .hero__content {
-    max-width: 20em;
-    padding-left: 0;
+  .hero__content,
+  .hero-main__content {
+    max-width: 80vw;
+    padding: 0;
     display: flex;
     flex-direction: column;
   }
 }
 
-.hero__title {
+.hero__title,
+.hero-main__title {
   font-family: 'Arkhip', 'Montserrat', sans-serif;
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: 400;
   line-height: 1;
   color: var(--grass-green);
   margin: 0 0 0.5em 0;
 }
 
-.hero__lead {
+.hero__lead,
+.hero-main__lead {
   font-size: 1.5em;
+  text-transform: uppercase;
   color: var(--grass-green);
   margin: 0 0 2em 0;
 }
 
 @media (max-width: 680px) {
-  .hero__title {
+  .hero__title,
+  .hero-main__title {
     font-size: 2em;
   }
 
-  .hero__lead {
+  .hero__lead,
+  .hero-main__lead {
     font-size: 1.25em;
   }
+}
+
+.hero__button {
+  align-self: end;
+  margin-top: 2em;
 }
 
 .slider {
@@ -489,12 +569,40 @@ a:focus {
 }
 .service-card__link:hover .service-card__image,
 .service-card__link:focus .service-card__image {
-  /* box-shadow: 0 6px 8px rgba(0,0,0,0.25); */
   transform: translateY(-10px);
 }
 
 .service-card__link:active .service-card__title {
   color: var(--txt-dark-green);
+}
+
+.services-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  padding-top: 10px;
+}
+
+@media (max-width: 1024px) {
+  .services-grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .services-grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card--grid {
+  width: 100%;
+  margin-top: 0;
+  grid-column: span 1;
+}
+
+.service-card__image--grid {
+  height: 19em;
 }
 
 .slider-prev,
@@ -1212,6 +1320,7 @@ a:focus {
 }
 
 .site-footer {
+  flex-shrink: 0;
   padding-top: 3em;
   padding-bottom: 3em;
   font-size: 0.9em;
