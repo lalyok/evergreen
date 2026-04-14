@@ -25,13 +25,13 @@ if ( ! empty( $bg_image['url'] ) ) {
 }
 ?>
 
-<section class="section how-we-work" aria-label="Как мы работаем" <?php echo $bg_style; ?>>
+<section class="section list-section how-we-work" aria-label="Как мы работаем" <?php echo $bg_style; ?>>
   <div class="section--bg-gradient">
     <div class="container">
       <div class="section__title-wrapper">
         <h2 class="section__title">Как мы работаем</h2>
       </div>
-      <div class="how-we-work__inner">
+      <div class="list-section__inner how-we-work__inner">
         <ol class="process-list">
           <?php if ( ! empty( $steps ) ) : ?>
             <?php foreach ( $steps as $s ) : ?>

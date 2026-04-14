@@ -4,19 +4,20 @@ $subtitle = get_field('hero_subtitle');
 $button_text = get_field('hero_button_text');
 $button_link = get_field('hero_button_link');
 $bg = get_field('hero_bg');
+$bg_url = is_array( $bg ) && ! empty( $bg['url'] ) ? $bg['url'] : ( is_string( $bg ) ? $bg : '' );
 ?>
 
-<section class="section hero-main" style="background-image: url('<?php echo esc_url($bg['url']); ?>')">
-    <div class="container hero-main__container">
-        <div class="hero-main__content">
-            <h1 class="hero-main__title"><?php echo esc_html($title); ?></h1>
+<section class="section hero hero--main"<?php echo $bg_url ? ' style="background-image: url(' . esc_url( $bg_url ) . ')"' : ''; ?>>
+    <div class="container hero__container hero__container--main">
+        <div class="hero__content hero__content--main">
+            <h1 class="hero__title hero__title--main"><?php echo esc_html($title); ?></h1>
 
             <?php if ($subtitle): ?>
-                <p class="hero-main__lead"><?php echo esc_html($subtitle); ?></p>
+                <p class="hero__lead hero__lead--main"><?php echo esc_html($subtitle); ?></p>
             <?php endif; ?>
 
             <?php if ($button_text && $button_link): ?>
-                <a class="button" href="<?php echo esc_url($button_link); ?>">
+                <a class="button hero__button hero__button--main" href="<?php echo esc_url($button_link); ?>">
                     <?php echo esc_html($button_text); ?>
                 </a>
             <?php endif; ?>

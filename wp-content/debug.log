@@ -17,3 +17,20 @@ Stack trace:
 [08-Apr-2026 14:06:06 UTC] Automatic updates complete.
 [09-Apr-2026 06:39:16 UTC] Automatic updates starting...
 [09-Apr-2026 06:39:17 UTC] Automatic updates complete.
+[13-Apr-2026 20:06:34 UTC] PHP Fatal error:  Uncaught TypeError: ltrim(): Argument #1 ($string) must be of type string, array given in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php:4496
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php(4496): ltrim(Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/parts/projects-slider.php(36): esc_url(Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template.php(816): require('/Applications/X...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template.php(749): load_template('/Applications/X...', false, Array)
+#4 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/general-template.php(206): locate_template(Array, true, false, Array)
+#5 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/single-service.php(12): get_template_part('parts/projects-...')
+#6 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/template-loader.php(132): include('/Applications/X...')
+#7 /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-blog-header.php(19): require_once('/Applications/X...')
+#8 /Applications/XAMPP/xamppfiles/htdocs/evergreen/index.php(17): require('/Applications/X...')
+#9 {main}
+  thrown in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php on line 4496
+[13-Apr-2026 20:06:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/parts/why-us.php on line 21
+[13-Apr-2026 20:06:34 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php on line 4496
+[13-Apr-2026 20:06:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/parts/why-us.php on line 21
+[14-Apr-2026 02:53:29 UTC] PHP Warning:  wp_version_check(): Произошла непредвиденная ошибка. Возможно, что-то не так с сайтом WordPress.org или с настройками вашего сервера. Если проблема не решится, обратитесь на <a href="https://ru.wordpress.org/support/forums/">форумы поддержки</a>. (Не удалось установить защищённое соединение с WordPress.org. Пожалуйста, свяжитесь с администратором сервера.) in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/functions.php on line 6131

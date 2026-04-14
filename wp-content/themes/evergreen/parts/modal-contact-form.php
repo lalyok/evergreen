@@ -1,7 +1,7 @@
 <div class="modal feedback-form-modal" id="contact-modal" aria-hidden="true">
   <div class="modal__content">
     <div class="modal__close">
-      <button class="modal__close-button" type="button"></button>
+      <button class="modal__close-button" id="contact-modal-close" type="button"></button>
     </div>
     <h2 class="section__title modal__title">Получить консультацию</h2>
     <form class="contact-form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
@@ -35,7 +35,7 @@
 <div class="modal modal-feedback-success" id="feedback-success-modal" aria-hidden="true">
   <div class="modal__content">
     <div class="modal__close">
-      <button class="modal__close-button" type="button"></button>
+      <button class="modal__close-button" id="feedback-success-modal-close" type="button"></button>
     </div>
     <h2 class="section__title modal__title modal__title--small-margin">Заявка отправлена!</h2>
     <p class="modal__message">Мы свяжемся с вами в ближайшее время.</p>

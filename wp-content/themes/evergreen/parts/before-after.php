@@ -36,13 +36,27 @@
 
             <div class="swiper-slide before-after__slides-wrapper">
               <div class="before-after__photo-wrapper">
-                <img class="before-after__photo" src="<?php echo esc_url(get_field( 'before-photo', $photo -> ID)['url']); ?>" alt="<?php echo esc_attr(get_field( 'before-photo', $photo -> ID)['alt']); ?>">
+                <?php
+                  $before = get_field( 'before-photo', $photo->ID );
+                  $before_url = is_array( $before ) && ! empty( $before['url'] ) ? $before['url'] : ( is_string( $before ) ? $before : '' );
+                  $before_alt = is_array( $before ) && ! empty( $before['alt'] ) ? $before['alt'] : '';
+                  if ( $before_url ) :
+                ?>
+                  <img class="before-after__photo" src="<?php echo esc_url( $before_url ); ?>" alt="<?php echo esc_attr( $before_alt ); ?>">
+                <?php endif; ?>
               </div>
 
               <div class="before-after__arrow"></div>
 
               <div class="before-after__photo-wrapper">
-                <img class="before-after__photo" src="<?php echo esc_url(get_field( 'after-photo', $photo -> ID)['url']); ?>" alt="<?php echo esc_attr(get_field( 'after-photo', $photo -> ID)['alt']); ?>">
+                <?php
+                  $after = get_field( 'after-photo', $photo->ID );
+                  $after_url = is_array( $after ) && ! empty( $after['url'] ) ? $after['url'] : ( is_string( $after ) ? $after : '' );
+                  $after_alt = is_array( $after ) && ! empty( $after['alt'] ) ? $after['alt'] : '';
+                  if ( $after_url ) :
+                ?>
+                  <img class="before-after__photo" src="<?php echo esc_url( $after_url ); ?>" alt="<?php echo esc_attr( $after_alt ); ?>">
+                <?php endif; ?>
               </div>
             </div>
   

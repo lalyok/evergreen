@@ -4,9 +4,11 @@ $subtitle = get_field('hero_subtitle');
 $button_text = get_field('hero_button_text');
 $button_link = get_field('hero_button_link');
 $bg = get_field('hero_bg');
+// normalize background field (may be array or string)
+$bg_url = is_array( $bg ) && ! empty( $bg['url'] ) ? $bg['url'] : ( is_string( $bg ) ? $bg : '' );
 ?>
 
-<section class="section hero" style="background-image: url('<?php echo esc_url($bg['url']); ?>')">
+<section class="section hero"<?php echo $bg_url ? ' style="background-image: url(' . esc_url( $bg_url ) . ')"' : ''; ?>>
     <div class="container hero__container">
         <div class="hero__content">
             <h1 class="hero__title"><?php echo esc_html($title); ?></h1>

@@ -1,6 +1,21 @@
 <?php
-  
-$bg_image = get_field( 'feedback-form-photo' );
+  global $contacts;
+  $contacts = get_posts( array(
+      'numberposts' => 1,
+      'category'    => 0,
+      'orderby'     => 'date',
+      'order'       => 'DESC',
+      'include'     => array(),
+      'exclude'     => array(),
+      'meta_key'    => '',
+      'meta_value'  =>'',
+      'post_type'   => 'contacts',
+      'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+    ) );
+    if ( $contacts ) {
+      $bg_image = get_field( 'feedback-form-photo', $contacts[0]->ID );
+    }
+    
 $bg_style = '';
 if ( ! empty( $bg_image['url'] ) ) {
   $bg_style = "style=\"--ff-bg: url('" . esc_url( $bg_image['url'] ) . "')\"";

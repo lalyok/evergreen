@@ -30,7 +30,7 @@
         </nav>
 
         <div class="header-actions">
-          <a class="button button--small" href="#contact">Связаться</a>
+          <a class="button button--small" id="contact-button-header" href="#contact">Связаться</a>
           <div class="burger-toggle-wrapper">
             <button class="burger-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
               <span></span>
@@ -41,23 +41,7 @@
         </div>
       </div>
     </div>
-    
-    <!-- <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-      <div class="container">
-        <div class="mobile-menu__inner">
-          <button class="modal__close-button mobile-menu__close" aria-label="Закрыть меню"></button>
-            <nav id="site-navigation-mobile" class="main-navigation main-navigation--mobile" role="navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'evergreen' ); ?>">
-              <?php
-                wp_nav_menu( array(
-                  'theme_location' => 'primary',
-                  'container' => false,
-                  'menu_class' => 'mobile-menu__list',
-                ) );
-              ?>
-            </nav>
-        </div>
-      </div>
-    </div> -->
+  
   </header>
 
   <main id="main" class="site-main">

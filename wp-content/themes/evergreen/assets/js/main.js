@@ -144,4 +144,99 @@
       }
     });
   });
+
+  /* Modal dialog handling (contact modal + success modal)
+     - open/close by buttons
+     - close by clicking outside .modal__content
+     - submit contact forms via fetch and show success modal on ok
+  */
+  document.addEventListener('DOMContentLoaded', function(){
+    var contactButton = document.getElementById('contact-button-header');
+    var contactModal = document.getElementById('contact-modal');
+    var contactClose = document.getElementById('contact-modal-close');
+    var successModal = document.getElementById('feedback-success-modal');
+    var successClose = document.getElementById('feedback-success-modal-close');
+
+    function openModal(modal) {
+      if (!modal) return;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      // remove modal-open if no modal remains open
+      var anyOpen = document.querySelector('.modal.is-open');
+      if (!anyOpen) document.body.classList.remove('modal-open');
+    }
+
+    // open contact modal from header button
+    if (contactButton && contactModal) {
+      contactButton.addEventListener('click', function(e){
+        e.preventDefault();
+        openModal(contactModal);
+      });
+    }
+
+    // close contact modal
+    if (contactClose && contactModal) {
+      contactClose.addEventListener('click', function(e){
+        e.preventDefault();
+        closeModal(contactModal);
+      });
+    }
+
+    // close success modal
+    if (successClose && successModal) {
+      successClose.addEventListener('click', function(e){
+        e.preventDefault();
+        closeModal(successModal);
+      });
+    }
+
+    // click outside modal__content closes modal
+    [contactModal, successModal].forEach(function(modal){
+      if (!modal) return;
+      modal.addEventListener('click', function(e){
+        // if click is outside .modal__content
+        if (!e.target.closest('.modal__content')) {
+          closeModal(modal);
+        }
+      });
+    });
+
+    // handle all contact-form submissions via AJAX so we can show success modal
+    var forms = document.querySelectorAll('form.contact-form');
+    forms.forEach(function(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var fd = new FormData(form);
+        var action = form.getAttribute('action') || window.location.href;
+        fetch(action, {
+          method: 'POST',
+          body: fd,
+          credentials: 'same-origin'
+        }).then(function(resp){
+          if (resp.ok) {
+            // if contact modal is open, close it
+            if (contactModal && contactModal.classList.contains('is-open')) {
+              closeModal(contactModal);
+            }
+            // open success modal
+            if (successModal) openModal(successModal);
+            // optionally reset the form
+            try { form.reset(); } catch (err) {}
+          } else {
+            // non-ok response — still try to show success? keep it simple: show success only on ok
+            console.warn('Form submit returned non-ok status', resp.status);
+          }
+        }).catch(function(err){
+          console.error('Form submit failed', err);
+        });
+      });
+    });
+  });
 })();
