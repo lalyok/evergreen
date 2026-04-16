@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: uslugi
+Template Name: services
  */
 
 get_header();

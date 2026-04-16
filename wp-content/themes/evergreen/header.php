@@ -30,7 +30,7 @@
         </nav>
 
         <div class="header-actions">
-          <a class="button button--small" id="contact-button-header" href="#contact">Связаться</a>
+          <a class="button button--small open-modal" id="contact-button-header" href="#contact">Связаться</a>
           <div class="burger-toggle-wrapper">
             <button class="burger-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
               <span></span>

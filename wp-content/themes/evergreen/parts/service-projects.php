@@ -2,12 +2,12 @@
   $photos = array();
   $max_photos = 5;
   for ( $i = 1; $i <= $max_photos; $i++ ) {
-      $photo_url = get_field( 'about-service-photo-' . $i );
+      $photo = get_field( 'about-service-photo-' . $i );
 
-      if ( empty( $photo_url )) {
+      if ( empty( $photo )) {
         continue;
       }
-      $photos[] = $photo_url;
+      $photos[] = $photo;
   }
 
   if ( ! empty( $photos ) ) : 
@@ -28,9 +28,9 @@
         <div class="swiper">
           <div class="swiper-wrapper">
 
-            <?php foreach ( $photos as $photo ) : 
+            <?php foreach ( $photos as $p ) : 
                 // Normalize ACF file field (may be array or string)
-                $photo_url = is_array( $photo ) && ! empty( $photo['url'] ) ? $photo['url'] : $photo;
+                $photo_url = is_array( $p ) && ! empty( $p['url'] ) ? $p['url'] : $p;
                 if ( empty( $photo_url ) ) {
                     continue;
                 }

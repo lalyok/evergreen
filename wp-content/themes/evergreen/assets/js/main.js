@@ -151,7 +151,7 @@
      - submit contact forms via fetch and show success modal on ok
   */
   document.addEventListener('DOMContentLoaded', function(){
-    var contactButton = document.getElementById('contact-button-header');
+    var contactButtons = document.querySelectorAll('.open-modal');
     var contactModal = document.getElementById('contact-modal');
     var contactClose = document.getElementById('contact-modal-close');
     var successModal = document.getElementById('feedback-success-modal');
@@ -174,10 +174,12 @@
     }
 
     // open contact modal from header button
-    if (contactButton && contactModal) {
-      contactButton.addEventListener('click', function(e){
-        e.preventDefault();
-        openModal(contactModal);
+    if (contactButtons && contactModal) {
+      contactButtons.forEach(function(button){
+        button.addEventListener('click', function(e){
+          e.preventDefault();
+          openModal(contactModal);
+        });
       });
     }
 
