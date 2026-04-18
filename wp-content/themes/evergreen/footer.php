@@ -93,5 +93,17 @@
   </footer>
 
   <?php wp_footer(); ?>
+  <!-- Cookie consent banner -->
+  <!-- <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" aria-hidden="true">
+    <div class="container">
+      <div class="cookie-banner__inner">
+        <p class="cookie-banner__text">Мы используем cookie для улучшения работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь на использование cookie.</p>
+        <div class="cookie-banner__actions">
+          <button id="cookie-accept" class="button button--small">Принять</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
 </body>
 </html>

@@ -52,7 +52,7 @@ body {
 html, body, input, button, textarea, select {
   font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.3;
   text-underline-offset: 0.15em;
   color: var(--txt-dark-green);
@@ -353,7 +353,7 @@ a:focus {
 }
 
 .section {
-  margin-bottom: 4em;
+  margin-bottom: 5em;
   overflow: hidden;
 }
 
@@ -366,6 +366,10 @@ a:focus {
   padding-bottom: 4em;
 }
 
+.section--not-found {
+  margin-bottom: 0;
+}
+
 .section__title-wrapper {
   display: flex;
   flex-direction: column;
@@ -375,24 +379,30 @@ a:focus {
 .section__title {
   display: inline-block;
   margin: 0 0 1.75em 0;
-  padding: 0.2em 0.8em;
-  border-radius: 0.5em;
-  border-bottom: 3px solid var(--grass-green);
-  font-size: 1.5em;
-  font-weight: 600;
+  font-family: 'Arkhip', 'Montserrat', sans-serif;
+  font-size: 2.5em;
+  font-weight: 400;
   text-transform: uppercase;
   text-align: center;
   color: var(--grass-green);
 }
 
 .section__title--huge {
-  font-family: 'Arkhip', 'Montserrat', sans-serif;
   font-size: 3.5em;
   font-weight: 400;
   text-transform: none;
   padding: 0;
   margin: 1.5em 0;
   border: none;
+}
+
+.section__title--underline {
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding: 0.2em 0.8em;
+  border-radius: 0.5em;
+  border-bottom: 3px solid var(--grass-green);
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .section--bg-gradient .section__title {
@@ -432,7 +442,7 @@ a:focus {
   content: "";
   position: absolute;
   left: 0; right: 0; top: 0; bottom: 0;
-  background: rgba(0,0,0,0.18);
+  background: rgba(0,0,0,0.3);
   pointer-events: none;
 }
 
@@ -762,6 +772,7 @@ a:focus {
 .about__text .about__lead {
   margin: 0 0 1.5em 0;
   color: var(--txt-dark-green);
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -1386,7 +1397,7 @@ a:focus {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2em;
   align-items: start;
 }
 
@@ -1459,7 +1470,7 @@ a:focus {
   position: absolute;
   content: "";
   left: 0;
-  top: calc(50% - 10px);
+  top: 0;
   width: 20px;
   height: 20px;
   border: 2px solid var(--pale-green);
@@ -1497,6 +1508,7 @@ a:focus {
 .contact-form__consent-text {
   font-size: 0.75em;
   color: var(--grass-green);
+  margin: 0;
 }
 
 .site-footer {
@@ -1831,7 +1843,6 @@ a:focus {
 
 .tarif-card {
   flex: 1 1 0;
-  max-width: 18em;
   display: flex;
   flex-direction: column;
 }
@@ -2107,7 +2118,6 @@ a:focus {
 @media (max-width: 1024px) {
   .about-us__chief-info-wrapper {
     max-width: 29em;
-    margin-left: 0;
   }
 
   .about-us__chief-info::before,
@@ -2163,4 +2173,93 @@ a:focus {
   text-transform: none;
   color: var(--txt-dark-green);
   margin-top: -1em;
+}
+
+.section--not-found {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../icons/pattern.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.not-found__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30em;
+  padding: 3em 2em;
+  background: var(--white);
+  border: 1px solid var(--pale-green);
+  border-radius: 30px;
+}
+
+@media (max-width: 680px) {
+  .not-found {
+    width: 100%;
+  }
+
+  .not-found__inner {
+    width: 100%;
+  }
+}
+
+.not-found__title {
+  font-size: 6.5em;
+  margin: 0;
+}
+
+.not-found__lead {
+  color: var(--grass-green);
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.not-found__text {
+  margin: 0;
+}
+
+/* Cookie banner */
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--grass-green);
+  color: var(--white);
+  padding: 1em 2em;
+  z-index: 9999;
+  display: none;
+}
+.cookie-banner[aria-hidden="false"], 
+.cookie-banner.is-open {
+  display: block;
+}
+.cookie-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+.cookie-banner__text {
+  margin: 0; 
+  font-size: 0.75em; 
+}
+.cookie-banner__actions { 
+  display:flex; 
+  gap:0.5em; 
+  align-items:center; 
+}
+
+@media (max-width: 680px) {
+  .cookie-banner__inner { 
+    flex-direction: column; 
+  }
+
+  .cookie-banner__actions {
+    justify-content: flex-end; 
+  }
 }

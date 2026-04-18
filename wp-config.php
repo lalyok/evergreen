@@ -20,6 +20,8 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+define('WP_CACHE', true);
+define( 'WPCACHEHOME', '/Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/plugins/wp-super-cache/' );
 define( 'DB_NAME', 'evergreen' );
 
 /** Database username */
@@ -90,7 +92,7 @@ define('WP_DEBUG', true);
 // define('WP_DEBUG_DISPLAY', false);
 // @ini_set('display_errors', 0);
 
-define('FS_METHOD', 'direct');
+// define('FS_METHOD', 'direct');
 
 /* Add any custom values between this line and the "stop editing" line. */
 

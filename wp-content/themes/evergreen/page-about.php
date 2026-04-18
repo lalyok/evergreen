@@ -10,7 +10,7 @@ if (get_field('hero_title')) {
 }
 
 get_template_part( 'parts/about-content' );
-get_template_part( 'parts/contact-form' );
+get_template_part( 'parts/about-us-form' );
 
 get_footer();
 ?>

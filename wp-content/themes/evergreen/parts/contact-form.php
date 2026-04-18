@@ -35,7 +35,7 @@ if ( ! empty( $bg_image['url'] ) ) {
           </label>
           <label>
             <span class="visually-hidden">Номер телефона</span>
-            <input class="contact-form__input" type="tel" name="phone" placeholder="Номер телефона" required>
+            <input class="contact-form__input" type="tel" name="phone" placeholder="Номер телефона" required minlength="18">
           </label>
           <label>
             <span class="visually-hidden">Email</span>

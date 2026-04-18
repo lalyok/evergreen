@@ -215,6 +215,31 @@
     forms.forEach(function(form){
       form.addEventListener('submit', function(e){
         e.preventDefault();
+
+        // Run native HTML5 validation before submitting via fetch.
+        // When we intercept submit with JS, the browser won't perform
+        // built-in constraint checks (required, minlength, pattern, etc.)
+        // unless we call checkValidity()/reportValidity() ourselves.
+        if ( ! form.checkValidity() ) {
+          try { form.reportValidity(); } catch (err) {}
+          return;
+        }
+
+        // Additional phone validation: ensure at least 11 digits (e.g. +7 + 10 digits).
+        var phoneField = form.querySelector('input[name="phone"]');
+        if (phoneField) {
+          var digits = (phoneField.value || '').replace(/\D/g, '');
+          if (digits.length < 11) {
+            try {
+              phoneField.setCustomValidity('Пожалуйста, введите корректный номер телефона.');
+              if (typeof phoneField.reportValidity === 'function') phoneField.reportValidity();
+            } catch (err) {}
+            // clear custom validity so user can correct later
+            setTimeout(function(){ try { phoneField.setCustomValidity(''); } catch(e) {} }, 2000);
+            return;
+          }
+        }
+
         var fd = new FormData(form);
         var action = form.getAttribute('action') || window.location.href;
         fetch(action, {
@@ -232,7 +257,6 @@
             // optionally reset the form
             try { form.reset(); } catch (err) {}
           } else {
-            // non-ok response — still try to show success? keep it simple: show success only on ok
             console.warn('Form submit returned non-ok status', resp.status);
           }
         }).catch(function(err){
@@ -241,4 +265,5 @@
       });
     });
   });
+
 })();

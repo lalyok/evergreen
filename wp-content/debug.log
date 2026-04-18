@@ -34,3 +34,79 @@ Stack trace:
 [13-Apr-2026 20:06:34 UTC] PHP Deprecated:  ltrim(): Passing null to parameter #1 ($string) of type string is deprecated in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/formatting.php on line 4496
 [13-Apr-2026 20:06:34 UTC] PHP Warning:  Trying to access array offset on value of type null in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-content/themes/evergreen/parts/why-us.php on line 21
 [14-Apr-2026 02:53:29 UTC] PHP Warning:  wp_version_check(): Произошла непредвиденная ошибка. Возможно, что-то не так с сайтом WordPress.org или с настройками вашего сервера. Если проблема не решится, обратитесь на <a href="https://ru.wordpress.org/support/forums/">форумы поддержки</a>. (Не удалось установить защищённое соединение с WordPress.org. Пожалуйста, свяжитесь с администратором сервера.) in /Applications/XAMPP/xamppfiles/htdocs/evergreen/wp-includes/functions.php on line 6131
+[18-Apr-2026 19:26:38 UTC] YouGile API returned status 404 body: <!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Страница не найдена - YouGile</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f7f8fd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", sans-serif;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .container {
+        text-align: center;
+        max-width: 90%;
+      }
+
+      .message {
+        color: #121b2e;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;
+        margin-top: 16px;
+      }
+
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+
+      @media (max-width: 480px) {
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+
+        .message {
+          font-size: 14px;
+          line-height: 18px;
+          margin-top: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M30.2104 0.804016C23.0494 0.804016 20.4847 5.13451 21.3344 10.9197C22.3013 18.0916 19.6347 20 14.2225 21.671C8.59157 23.4096 4.86574 32.3505 12.3708 37.4504C16.273 40.145 21.9425 39.6514 25.5226 36.443C29.9636 32.4627 29.3628 26.5682 31.8156 21.671C34.2531 16.8045 39.3168 16.5484 39.9618 10.4635C40.5126 5.26816 35.0089 0.804016 30.2104 0.804016Z"
+          fill="#F2732B"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M5.00522 2.06656C-4.28002 5.26167 0.581321 19.2018 9.59675 17.1984C19.8724 14.9151 14.449 -1.18311 5.00522 2.06656Z"
+          fill="#3F8BFD"
+        />
+      </svg>
+      <div class="message">Страница не найдена</div>
+      <a href="/team" class="_link">На главную</a>
+    </div>
+  </body>
+</html>
+
