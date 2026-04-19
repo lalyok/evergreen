@@ -31,7 +31,7 @@ function evergreen_enqueue_assets() {
   wp_enqueue_style( 'evergreen-style', get_stylesheet_uri(), array(), $theme_version );
 
   // Additional compiled/site CSS
-  wp_enqueue_style( 'evergreen-main', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version );
+  // wp_enqueue_style( 'evergreen-main', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version );
 
   // Swiper (CSS + JS) from CDN
   wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', array(), '9.0' );
