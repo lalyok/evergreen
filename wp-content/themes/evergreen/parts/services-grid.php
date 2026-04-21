@@ -1,8 +1,6 @@
 <section class="section services-grid" aria-label="Наши услуги">
   <div class="container">
-    <!-- <div class="section__title-wrapper">
-      <h2 class="section__title">Наши услуги</h2>
-    </div> -->
+    <h1 class="section__title section__title--huge">Услуги</h1>
     <div class="services-grid-wrapper">
 
       <?php

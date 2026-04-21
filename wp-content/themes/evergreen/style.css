@@ -83,16 +83,17 @@ html, body, input, button, textarea, select {
 
 @media (max-width: 1024px) {
   html, body, input, button, textarea, select {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
   }
 }
 
-/* @media (max-width: 680px) {
+@media (max-width: 680px) {
   html, body, input, button, textarea, select {
     font-size: 14px;
+    line-height: 1.5;
   }
-} */
+}
 
 a {
   color: var(--pink);
@@ -826,7 +827,7 @@ a:focus {
 .about__row {
   display: flex;
   gap: 1.5em;
-  align-items: center;
+  align-items: start;
   justify-content: center;
 }
 
@@ -859,7 +860,7 @@ a:focus {
 }
 
 .about__text .about__lead {
-  margin: 0 0 0.8em 0;
+  margin: 0 0 0.5em 0;
   font-size: 1.2em;
   color: var(--grass-green);
   font-weight: 500;
@@ -867,10 +868,8 @@ a:focus {
 }
 
 .about__image img {
-  width: 40vw;
-  height: 40vw;
-  max-width: 20em;
-  max-height: 20em;
+  width: 35vw;
+  height: 35vw;
   object-fit: cover;
   border-radius: 30px;
   display: block;
@@ -891,14 +890,14 @@ a:focus {
 .list-section .section--bg-gradient {
   padding-top: 100px;
   padding-bottom: 50px;
-  margin-bottom: 80px;
+  margin-bottom: 150px;
 }
 
 @media (max-width: 1024px) {
   .list-section .section--bg-gradient {
     padding-top: 80px;
-    padding-bottom: 80px;
-    margin-bottom: 70px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
   } 
 }
 
@@ -923,10 +922,10 @@ a:focus {
 .list-section::after {
   content: "";
   position: absolute;
-  right: -20%;
-  bottom: 20px;
+  right: -25%;
+  bottom: 80px;
   width: 60%;
-  height: 85%;
+  height: 80%;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -942,16 +941,24 @@ a:focus {
 .service-includes::after {
   background-image: var(--si-bg);
   right: -25%;
-  height: 75%;
+  height: 87%;
+  bottom: 0;
 }
 
 @media (max-width: 1024px) {
   .list-section::after {
     width: 43%;
+    right: -15%;
+    bottom: 40px;
+  }
+
+  .service-includes {
+    padding-bottom: 10px;
   }
 
   .service-includes::after {
-    width: 55%;
+    width: 45%;
+    bottom: 0;
   }
 }
 
@@ -963,6 +970,10 @@ a:focus {
     right: 0;
     bottom: 80px;
   } 
+
+  .service-includes {
+    padding-bottom: 0;
+  }
 
   .service-includes::after {
     bottom: 0;
@@ -981,7 +992,7 @@ a:focus {
 .process-list__item {
   position: relative;
   padding-left: 130px;
-  max-width: 500px;
+  max-width: 650px;
   min-height: 120px;
   display: flex;
   flex-direction: column;
@@ -1021,6 +1032,7 @@ a:focus {
 @media (max-width: 1024px) {
   .process-list__item {
     padding-left: 102px;
+    max-width: 500px;
   }
 
   .process-list__item::before {
@@ -1086,7 +1098,7 @@ a:focus {
   display: flex;
   list-style: none;
   flex-direction: column;
-  gap: 3em;
+  gap: 4em;
   margin: 0;
   padding: 0;
 }
@@ -1095,10 +1107,17 @@ a:focus {
   margin: 0;
   color: var(--grass-green);
   position: relative;
+  font-size: 24px;
+}
+
+@media (max-width: 1024px) {
+  .service-includes__inner ul > li {
+    font-size: 20px;
+  }
 }
 
 .service-includes__inner ul > li:nth-child(2n) {
-  margin-left: 3em;
+  margin-left: 5em;
 }
 
 @media (max-width: 680px) {
@@ -1132,13 +1151,13 @@ a:focus {
 
 @media (max-width: 1024px) {
   .service-includes__inner ul > li::before {
-    left: 60px;
-    bottom: -20px;
+    left: 80px;
+    bottom: -10px;
   }
 
   .service-includes__inner ul > li::after {
-    left: 60px;
-    bottom: -19px;
+    left: 80px;
+    bottom: -9px;
   }
 }
 
@@ -1329,7 +1348,7 @@ a:focus {
 
 .feedback-card {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 1.5em;
   padding: 7.5em 0;
@@ -1345,19 +1364,27 @@ a:focus {
 .feedback-card__text {
   flex: 1 1 20em;
   max-width: 30em;
-  padding: 2.5em 2em;
+  padding: 1.5em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--white);
-  border: 3px solid var(--super-pale-green);
-  border-radius: 40px;
+  border-radius: 30px;
+}
+
+@media (max-width: 680px) {
+  .feedback-card__text {
+    border-radius: 20px;
+  }
 }
 
 .feedback-card__text-content {
-  margin: 0 0 30px;
+  margin: 0 0 20px;
 }
 
 .feedback-card__author,
 .feedback-card__company {
-  margin: 0 0 0.5em 0;
+  margin: 0;
   color: var(--grass-green);
   text-align: right;
 }
@@ -1370,8 +1397,7 @@ a:focus {
   flex: 0 1 14em;
   display: block;
   position: relative;
-  border: 3px solid var(--super-pale-green);
-  border-radius: 40px;
+  border-radius: 30px;
   overflow: hidden;
 }
 
@@ -1860,6 +1886,7 @@ a:focus {
   border: 3px solid var(--cremmy);
   border-radius: 30px;
   max-width: 600px;
+  text-align: center;
 }
 
 .service-extra-info__inner p {
@@ -1919,7 +1946,7 @@ a:focus {
 
 .tarif-card__image {
   width: 100%;
-  height: 16em;
+  height: 360px;
   display: block;
   object-fit: cover;
   border-top-left-radius: 30px;
@@ -1929,9 +1956,9 @@ a:focus {
 .tarif-card__inner {
   display: flex;
   flex-direction: column;
-  gap: 1em;
-  padding: 1em;
-  border: 3px solid var(--cremmy);
+  gap: 24px;
+  padding: 24px;
+  border: 3px solid var(--pale-green);
   border-top: none;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -1940,21 +1967,50 @@ a:focus {
 .tarif-card__text {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 16px;
 }
 
 .tarif-card__title {
   margin: 0;
+  font-size: 24px;
   font-weight: 600;
   text-transform: uppercase;
-  text-align: center;
 }
 
 .tarif-card__info p {
-  margin: 0.5em 0;
+  margin: 0;
   font-size: 0.75em;
   color: var(--grass-green);
   text-transform: uppercase;
+}
+
+.tarif-card__info p:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 1024px) {
+  .tarif-card__image {
+    height: 230px;
+  }
+
+  .tarif-card__inner {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .tarif-card__text {
+    gap: 12px;
+  }
+  
+  .tarif-card__title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 680px) {
+  .tarif-card {
+    flex-basis: 100%;
+  }
 }
 
 .portfolio__container {
@@ -1981,6 +2037,7 @@ a:focus {
   font-weight: 600;
   color: var(--grass-green);
   margin: 0 0 1em 0;
+  text-transform: uppercase;
 }
 
 .portfolio__project-description p {
@@ -1998,7 +2055,7 @@ a:focus {
   width: 100%;
   max-width: 100%;
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .portfolio__main-slider .portfolio__photo {
