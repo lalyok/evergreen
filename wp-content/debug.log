@@ -110,3 +110,4 @@ Stack trace:
   </body>
 </html>
 
+[23-Apr-2026 20:37:43 UTC] YouGile task create returned status 400 body: {"statusCode":400,"message":"Для создания сделки необходимо указать columnId CRM проекта","error":"Bad Request"}

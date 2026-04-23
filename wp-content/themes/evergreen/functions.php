@@ -107,6 +107,16 @@ function evergreen_customize_yougile_settings( $wp_customize ) {
     'section'  => 'evergreen_api_settings',
     'type'     => 'text',
   ) );
+
+  $wp_customize->add_setting( 'evergreen_yougile_project_id', array(
+    'sanitize_callback' => 'sanitize_text_field',
+  ) );
+
+  $wp_customize->add_control( 'evergreen_yougile_project_id', array(
+    'label'    => __( 'YouGile Project ID', 'evergreen' ),
+    'section'  => 'evergreen_api_settings',
+    'type'     => 'text',
+  ) );
 }
 add_action( 'customize_register', 'evergreen_customize_yougile_settings' );
 
@@ -160,48 +170,81 @@ if ( ! function_exists( 'evergreen_handle_contact_form' ) ) {
       wp_send_json_error( array( 'message' => 'Phone number is too short' ), 422 );
     }
 
-    // Build task payload
-    $title = trim( $name . ' ' . $phone );
-    $description = $email;
+    // Build title for the task
+    $title = trim( $name . ', ' . $phone );
 
     // YouGile API configuration (read from theme options / Customizer)
-    $api_endpoint = 'https://yougile.com/api-v2/tasks';
     $api_key = get_theme_mod( 'evergreen_yougile_api_key' );
-    $column_id = get_theme_mod( 'evergreen_yougile_column_id' );
+    $project_id = get_theme_mod( 'evergreen_yougile_project_id' );
 
-    $body = array(
-      'title' => $title,
-      'description' => $description,
-      // include column identifier — try common keys used by APIs
-      'columnId' => $column_id
+    // Prepare contact-person creation payload
+    $contact_endpoint = 'https://yougile.com/api-v2/crm/contact-persons';
+    $contact_body = array(
+      'projectId' => $project_id,
+      'title'     => $name,
+      'fields'    => array(
+        'phone' => $phone_digits,
+        'email' => $email,
+      ),
     );
 
-    $args = array(
+    $common_args = array(
       'headers' => array(
         'Content-Type'  => 'application/json',
-        'Authorization' => 'Bearer ' . $api_key
+        'Authorization' => 'Bearer ' . $api_key,
       ),
-      'body'    => wp_json_encode( $body ),
       'timeout' => 20,
     );
 
-    $response = wp_remote_post( $api_endpoint, $args );
+    $contact_args = $common_args;
+    $contact_args['body'] = wp_json_encode( $contact_body );
 
-    if ( is_wp_error( $response ) ) {
-      error_log( 'YouGile API request failed: ' . $response->get_error_message() );
-      wp_send_json_error( array( 'message' => 'Failed to send request' ), 500 );
+    $contact_resp = wp_remote_post( $contact_endpoint, $contact_args );
+    if ( is_wp_error( $contact_resp ) ) {
+      error_log( 'YouGile contact create failed: ' . $contact_resp->get_error_message() );
+      wp_send_json_error( array( 'message' => 'Failed to create contact' ), 500 );
     }
 
-    $code = wp_remote_retrieve_response_code( $response );
-    $body = wp_remote_retrieve_body( $response );
+    $contact_code = wp_remote_retrieve_response_code( $contact_resp );
+    $contact_body_raw = wp_remote_retrieve_body( $contact_resp );
+    $contact_data = json_decode( $contact_body_raw, true );
 
-    if ( $code >= 200 && $code < 300 ) {
-      wp_send_json_success( array( 'message' => 'Task created', 'response' => json_decode( $body, true ) ) );
+    if ( ! ( $contact_code >= 200 && $contact_code < 300 ) || empty( $contact_data['id'] ) ) {
+      error_log( 'YouGile contact create returned status ' . $contact_code . ' body: ' . $contact_body_raw );
+      wp_send_json_error( array( 'message' => 'Contact creation failed', 'status' => $contact_code ), 502 );
     }
 
-    // Log for debugging
-    error_log( 'YouGile API returned status ' . $code . ' body: ' . $body );
-    wp_send_json_error( array( 'message' => 'API returned error', 'status' => $code ), 502 );
+    $contact_id = $contact_data['id'];
+
+    // Create task linked to the contact person
+    $tasks_endpoint = 'https://yougile.com/api-v2/tasks';
+    $task_body = array(
+      'title' => $title,
+      'columnId' => get_theme_mod( 'evergreen_yougile_column_id' ),
+      'deal'  => array(
+        'contactPersonIds' => array( $contact_id ),
+      ),
+    );
+
+    $task_args = $common_args;
+    $task_args['body'] = wp_json_encode( $task_body );
+
+    $task_resp = wp_remote_post( $tasks_endpoint, $task_args );
+    if ( is_wp_error( $task_resp ) ) {
+      error_log( 'YouGile task create failed: ' . $task_resp->get_error_message() );
+      wp_send_json_error( array( 'message' => 'Failed to create task' ), 500 );
+    }
+
+    $task_code = wp_remote_retrieve_response_code( $task_resp );
+    $task_body_raw = wp_remote_retrieve_body( $task_resp );
+    $task_data = json_decode( $task_body_raw, true );
+
+    if ( $task_code >= 200 && $task_code < 300 ) {
+      wp_send_json_success( array( 'message' => 'Contact and task created', 'contact' => $contact_data, 'task' => $task_data ) );
+    }
+
+    error_log( 'YouGile task create returned status ' . $task_code . ' body: ' . $task_body_raw );
+    wp_send_json_error( array( 'message' => 'Task creation failed', 'status' => $task_code ), 502 );
   }
 }
 
