@@ -30,6 +30,8 @@
             // output items twice to create seamless infinite marquee
             echo implode( "\n", $items );
             echo implode( "\n", $items );
+            echo implode( "\n", $items );
+            echo implode( "\n", $items );
           }
 
           wp_reset_postdata();

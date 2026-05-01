@@ -702,10 +702,6 @@ a:focus {
   transition: color .12s ease, text-decoration .12s ease;
 }
 
-.service-card__link:hover .service-card__title,
-.service-card__link:focus .service-card__title {
-  text-decoration: underline;
-}
 .service-card__link:hover .service-card__image,
 .service-card__link:focus .service-card__image {
   transform: translateY(-10px);
@@ -748,7 +744,7 @@ a:focus {
   bottom: 0 !important;
 }
 
-.projects__photo-wrapper {
+.projects__photo-wrapper .pswp-link{
   width: 100%;
   display: flex;
   align-items: center;
@@ -760,7 +756,9 @@ a:focus {
   display: block;
   height: 60vh;
   width: auto;
+  max-width: 100%;
   object-fit: cover;
+  border-radius: 30px;
 }
 
 .slider-prev,
@@ -1220,8 +1218,12 @@ a:focus {
 }
 
 @keyframes partners-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
 .before-after__slides-wrapper {
@@ -1301,10 +1303,14 @@ a:focus {
   }
 }
 
+.pswp-link {
+  width: 100%;
+  height: 100%;
+}
+
 .testimonials__slider {
   position: relative;
   overflow: visible;
-  background: var(--gradient-green);
 }
 
 .testimonials__slider-wrapper {
@@ -1325,7 +1331,7 @@ a:focus {
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity .45s ease, transform .45s ease;
+  /* transition: background-image .1s ease, transform .45s ease; */
   transform: scale(1.02);
 }
 

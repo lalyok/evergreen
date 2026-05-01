@@ -40,9 +40,14 @@
                   $before = get_field( 'before-photo', $photo->ID );
                   $before_url = is_array( $before ) && ! empty( $before['url'] ) ? $before['url'] : ( is_string( $before ) ? $before : '' );
                   $before_alt = is_array( $before ) && ! empty( $before['alt'] ) ? $before['alt'] : '';
+                  $before_w = is_array( $before ) && ! empty( $before['width'] ) ? $before['width'] : '';
+                  $before_h = is_array( $before ) && ! empty( $before['height'] ) ? $before['height'] : '';
+                  $before_thumb = is_array( $before ) && ! empty( $before['sizes']['large'] ) ? $before['sizes']['large'] : $before_url;
                   if ( $before_url ) :
                 ?>
-                  <img class="before-after__photo" src="<?php echo esc_url( $before_url ); ?>" alt="<?php echo esc_attr( $before_alt ); ?>">
+                  <a class="pswp-link" href="<?php echo esc_url( $before_url ); ?>" data-pswp-width="<?php echo esc_attr( $before_w ); ?>" data-pswp-height="<?php echo esc_attr( $before_h ); ?>">
+                    <img class="before-after__photo" src="<?php echo esc_url( $before_thumb ); ?>" alt="<?php echo esc_attr( $before_alt ); ?>" loading="lazy">
+                  </a>
                 <?php endif; ?>
               </div>
 
@@ -53,9 +58,14 @@
                   $after = get_field( 'after-photo', $photo->ID );
                   $after_url = is_array( $after ) && ! empty( $after['url'] ) ? $after['url'] : ( is_string( $after ) ? $after : '' );
                   $after_alt = is_array( $after ) && ! empty( $after['alt'] ) ? $after['alt'] : '';
+                  $after_w = is_array( $after ) && ! empty( $after['width'] ) ? $after['width'] : '';
+                  $after_h = is_array( $after ) && ! empty( $after['height'] ) ? $after['height'] : '';
+                  $after_thumb = is_array( $after ) && ! empty( $after['sizes']['large'] ) ? $after['sizes']['large'] : $after_url;
                   if ( $after_url ) :
                 ?>
-                  <img class="before-after__photo" src="<?php echo esc_url( $after_url ); ?>" alt="<?php echo esc_attr( $after_alt ); ?>">
+                  <a class="pswp-link" href="<?php echo esc_url( $after_url ); ?>" data-pswp-width="<?php echo esc_attr( $after_w ); ?>" data-pswp-height="<?php echo esc_attr( $after_h ); ?>">
+                    <img class="before-after__photo" src="<?php echo esc_url( $after_thumb ); ?>" alt="<?php echo esc_attr( $after_alt ); ?>" loading="lazy">
+                  </a>
                 <?php endif; ?>
               </div>
             </div>

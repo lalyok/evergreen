@@ -61,7 +61,14 @@
                 ?>
           
                 <div class="swiper-slide">
-                  <img class="portfolio__photo" src="<?php echo esc_url( $photo_url ); ?>" alt="<?php echo esc_attr( get_the_title( $project->ID ) ); ?>">
+                  <?php
+                    $photo_w = is_array( $p ) && ! empty( $p['width'] ) ? $p['width'] : '';
+                    $photo_h = is_array( $p ) && ! empty( $p['height'] ) ? $p['height'] : '';
+                    $photo_thumb = is_array( $p ) && ! empty( $p['sizes']['large'] ) ? $p['sizes']['large'] : $photo_url;
+                  ?>
+                  <a class="pswp-link" href="<?php echo esc_url( $photo_url ); ?>" data-pswp-width="<?php echo esc_attr( $photo_w ); ?>" data-pswp-height="<?php echo esc_attr( $photo_h ); ?>">
+                    <img class="portfolio__photo" src="<?php echo esc_url( $photo_thumb ); ?>" alt="<?php echo esc_attr( get_the_title( $project->ID ) ); ?>" loading="lazy">
+                  </a>
                 </div>
                 <?php endforeach; ?>
               
@@ -80,6 +87,7 @@
                     if ( empty( $photo_url ) ) {
                         continue;
                     }
+                    
                 ?>
           
                 <div class="swiper-slide">

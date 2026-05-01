@@ -54,9 +54,12 @@
                 if ( $feedback_file ) :
                   // ACF file field may return an array with ['url'] or a string URL
                   $file_url = is_array( $feedback_file ) && ! empty( $feedback_file['url'] ) ? $feedback_file['url'] : $feedback_file;
+                  $file_w = is_array( $feedback_file ) && ! empty( $feedback_file['width'] ) ? $feedback_file['width'] : '';
+                  $file_h = is_array( $feedback_file ) && ! empty( $feedback_file['height'] ) ? $feedback_file['height'] : '';
+                  $file_thumb = is_array( $feedback_file ) && ! empty( $feedback_file['sizes']['large'] ) ? $feedback_file['sizes']['large'] : $file_url;
                 ?>
-                  <a class="feedback-card__file-link" href="<?php echo esc_url( $file_url ); ?>" target="_blank">
-                    <img class="feedback-card__photo" src="<?php echo esc_url( $file_url ); ?>" alt="<?php echo esc_attr( get_the_title( $feedback->ID ) ); ?>">
+                  <a class="feedback-card__file-link pswp-link" href="<?php echo esc_url( $file_url ); ?>" data-pswp-width="<?php echo esc_attr( $file_w ); ?>" data-pswp-height="<?php echo esc_attr( $file_h ); ?>" target="_blank">
+                    <img class="feedback-card__photo" src="<?php echo esc_url( $file_thumb ); ?>" alt="<?php echo esc_attr( get_the_title( $feedback->ID ) ); ?>" loading="lazy">
                     <p>Смотреть скан →</p>
                   </a>
                 <?php endif; ?>

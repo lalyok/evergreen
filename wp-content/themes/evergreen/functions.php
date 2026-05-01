@@ -27,13 +27,9 @@ add_action( 'after_setup_theme', 'evergreen_setup' );
 function evergreen_enqueue_assets() {
   $theme_version = wp_get_theme()->get( 'Version' );
 
-  // Main theme stylesheet (style.css in theme root)
   wp_enqueue_style( 'evergreen-style', get_stylesheet_uri(), array(), $theme_version );
 
-  // Additional compiled/site CSS
-  // wp_enqueue_style( 'evergreen-main', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version );
-
-  // Swiper (CSS + JS) from CDN
+  // Swiper (CSS) from CDN
   wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', array(), '9.0' );
 
   // Main JS
@@ -45,10 +41,8 @@ function evergreen_enqueue_assets() {
   // Swiper JS
   wp_enqueue_script( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.js', array(), '9.0', true );
 
-  // Init script for services slider (depends on swiper and main)
   wp_enqueue_script( 'evergreen-services-swiper', get_template_directory_uri() . '/assets/js/services-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
   
-  // Init script for before/after slider
   wp_enqueue_script( 'evergreen-before-after-swiper', get_template_directory_uri() . '/assets/js/before-after-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
 
   wp_enqueue_script( 'evergreen-testimonials-swiper', get_template_directory_uri() . '/assets/js/testimonials-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
@@ -56,7 +50,20 @@ function evergreen_enqueue_assets() {
   wp_enqueue_script( 'evergreen-projects-swiper', get_template_directory_uri() . '/assets/js/projects-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
 
   wp_enqueue_script( 'evergreen-portfolio-swiper', get_template_directory_uri() . '/assets/js/portfolio-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
-}
+
+  // PhotoSwipe CSS
+  wp_enqueue_style( 'photoswipe-css', 'https://unpkg.com/photoswipe@5/dist/photoswipe.css', array(), null );
+
+  // Central module loader: imports PhotoSwipe ESM builds and exposes a shared object on window
+  wp_enqueue_script( 'photoswipe-shared', get_template_directory_uri() . '/assets/js/photoswipe-shared.js', array(), $theme_version, true );
+  wp_script_add_data( 'photoswipe-shared', 'type', 'module' );
+
+  // Per-gallery init scripts (they will use the shared loader via window.__PhotoSwipeShared)
+  wp_enqueue_script( 'evergreen-before-after-photoswipe', get_template_directory_uri() . '/assets/js/before-after-photoswipe.js', array( 'evergreen-main' ), $theme_version, true );
+  wp_enqueue_script( 'evergreen-testimonials-photoswipe', get_template_directory_uri() . '/assets/js/testimonials-photoswipe.js', array( 'evergreen-main' ), $theme_version, true );
+  wp_enqueue_script( 'evergreen-portfolio-photoswipe', get_template_directory_uri() . '/assets/js/portfolio-photoswipe.js', array( 'evergreen-main' ), $theme_version, true );
+  wp_enqueue_script( 'evergreen-projects-photoswipe', get_template_directory_uri() . '/assets/js/projects-photoswipe.js', array( 'evergreen-main' ), $theme_version, true );
+  }
 
 add_action( 'wp_enqueue_scripts', 'evergreen_enqueue_assets' );
 

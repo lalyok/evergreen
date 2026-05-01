@@ -69,14 +69,16 @@
                         <div class="contacts-item__icon">
                           <?php echo get_field( 'contacts-messenger-icon', $contact->ID ); ?>
                         </div>
-                        <p class="contacts-item__text"><a href="<?php echo esc_attr( get_field( 'contacts-messenger-url', $contact->ID ) ); ?>"><?php echo esc_html( get_field( 'contacts-messenger-address', $contact->ID ) ); ?></a></p>
+                        <p class="contacts-item__text"><a href="<?php echo esc_attr( get_field( 'contacts-messenger-url', $contact->ID ) ); ?>" target="_blank"><?php echo esc_html( get_field( 'contacts-messenger-address', $contact->ID ) ); ?></a></p>
                       </div>
                       <?php if ( get_field( 'contacts-address', $contact->ID ) ) : ?>
                         <div class="contacts-item">
                           <div class="contacts-item__icon">
                             <?php echo get_field( 'contacts-address-icon', $contact->ID ); ?>
                           </div>
-                          <p class="contacts-item__text"><?php echo esc_html( get_field( 'contacts-address', $contact->ID ) ); ?></p>
+                          <p class="contacts-item__text">
+                            <a href="<?php echo esc_attr( get_field( 'contacts-address-link', $contact->ID ) ); ?>" target="_blank"><?php echo esc_html( get_field( 'contacts-address', $contact->ID ) ); ?></a>
+                          </p>
                         </div>
                       <?php endif; ?>
   
