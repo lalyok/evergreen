@@ -47,10 +47,12 @@
   </section>
 </div>
 <section class="section about-us__citations">
+  <div class="container">
+    <h3 class="section__subtitle">Ценности</h3>
+  </div>
   <div class="about-us__values">
     <div class="container">
       <div class="about-us__values-wrapper">
-        <h3 class="section__subtitle">Ценности</h3>
         <p class="about-us__values-text">
           <?php echo $about_us_values_text; ?>
         </p>

@@ -123,9 +123,9 @@ a:focus {
   background: var(--white-translucent);
   border-bottom: 1px solid rgba(0,0,0,0.04);
 }
+
 .site-header-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding-top: 10px;
@@ -177,7 +177,44 @@ a:focus {
 }
 
 .main-navigation {
+  display: flex;
+  flex-grow: 1;
+  gap: 20px;
+  align-items: baseline;
   transition: all var(--transition-fast) ease-in-out;
+}
+
+.header-city {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: -10px;
+  color: var(--grass-green);
+}
+
+.header-city__icon {
+  width: 10px;
+  height: 14px;
+}
+
+.header-city__name {
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .header-city {
+    order: 1;
+  }
+  
+  .header-city__name {
+    font-size: 12px;
+  }
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 @starting-style {
@@ -186,7 +223,7 @@ a:focus {
   }
 }
 
-.main-navigation ul {
+.main-menu ul {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -197,18 +234,18 @@ a:focus {
 }
 
 @media (max-width: 1024px) {
-  .main-navigation ul {
+  .main-menu ul {
     flex-direction: column;
     gap: 15px;
   }
 }
 
-.main-navigation li {
+.main-menu li {
   margin: 0;
   font-size: 14px;
 }
 
-.main-navigation a {
+.main-menu a {
   display: inline-block;
   text-transform: uppercase;
   color: var(--txt-dark-green);
@@ -217,14 +254,14 @@ a:focus {
   font-weight: 400;
 }
 
-.main-navigation a:hover,
-.main-navigation a:active {
+.main-menu a:hover,
+.main-menu a:active {
   font-weight: 600;
 }
 
-.main-navigation .current-menu-item > a,
-.main-navigation .current_page_item > a,
-.main-navigation a[aria-current="page"] {
+.main-menu .current-menu-item > a,
+.main-menu .current_page_item > a,
+.main-menu a[aria-current="page"] {
   border-bottom: 1px solid var(--grass-green);
   padding-bottom: 5px;
 }
@@ -300,6 +337,7 @@ a:focus {
   .main-navigation {
     order: 1;
     flex: 1 1 100%;
+    gap: 10px;
   }
 
   .main-navigation.is-open { 
@@ -347,6 +385,13 @@ a:focus {
 .button:focus {
   background: var(--dark-pink);
   color: var(--white);
+}
+
+.button--navigation {
+  background: var(--white-translucent);
+  font-weight: 400;
+  color: var(--grass-green);
+
 }
 
 .button--outline {
@@ -424,6 +469,7 @@ a:focus {
 .section__title {
   display: inline-block;
   margin: 0 0 80px 0;
+  padding-top: 5px;
   font-family: 'Arkhip', 'Montserrat', sans-serif;
   font-size: 48px;
   line-height: 1.2;
@@ -470,6 +516,7 @@ a:focus {
 }
 
 .section__subtitle {
+  font-family: Arkhip, 'Montserrat', sans-serif;
   font-size: 2.5em;
   color: var(--grass-green);
   margin: 0;
@@ -634,6 +681,44 @@ a:focus {
 }
 }
 
+.services-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.services-navigation__link {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 680px) {
+  .services-navigation .container {
+    padding: 0;
+  }
+
+  .services-navigation__link--prev {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .services-navigation__link--next {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.services-navigation__wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 100%;
+}
+
 .slider {
   display: flex;
   flex-wrap: nowrap;
@@ -641,13 +726,11 @@ a:focus {
   gap: var(--gap);
 }
 
-/* Ensure Swiper behaves inside flex .slider: constrain width and allow children to shrink */
 .slider > .swiper {
   flex: 1 1 100%;
-  min-width: 0; /* allow flex item to shrink below content width */
+  min-width: 0;
 }
 
-/* Prevent individual slides from forcing extreme widths inside flex containers */
 .slider .swiper-slide {
   min-width: 0;
   box-sizing: border-box;
@@ -1639,6 +1722,7 @@ a:focus {
 
 .site-footer a {
   color: var(--white);
+  text-decoration: none;
 }
 
 .site-footer a:hover,
@@ -2157,6 +2241,8 @@ a:focus {
 
 .about-us__values-wrapper {
   max-width: 25em;
+  margin-left: auto;
+  padding: 1.5em 0;
 }
 
 .about-us__values::before,
@@ -2164,18 +2250,18 @@ a:focus {
   content: "";
   position: absolute;
   background-color: var(--pale-green);
-  right: 58%;
+  right: 65%;
 }
 
 .about-us__values::before {
-  bottom: 0;
+  top: 0;
   width: 5px;
   height: 5px;
   border-radius: 50%;
 }
 
 .about-us__values::after {
-  bottom: 1px;
+  top: 1px;
   width: 500%;
   height: 2px;
   transform: translateX(100%);
@@ -2183,12 +2269,12 @@ a:focus {
 
 @media (max-width: 1024px) {
   .about-us__values-wrapper {
-    max-width: 21em;
+    max-width: 22em;
   }
 
   .about-us__values::before,
   .about-us__values::after {
-    right: 45%;
+    right: 60%;
   }
 }
 
@@ -2200,22 +2286,17 @@ a:focus {
   .about-us__values::before,
   .about-us__values::after {
     right: 52%;
-    bottom: -20px;
-  }
-
-  .about-us__values::after {
-    bottom: -19px;
   }
 }
 
 .about-us__values-text {
-  margin: 1.5em 0 4em 0;
+  margin: 0;
   color: var(--grass-green);
-  text-transform: uppercase;
 }
 
 .about-us__chief-info {
   position: relative;
+  padding-bottom: 30px;
 }
 
 .about-us__chief-info::before,
@@ -2223,7 +2304,7 @@ a:focus {
   content: "";
   position: absolute;
   background-color: var(--pale-green);
-  left: 41%;
+  left: 70%;
 }
 
 .about-us__chief-info::before {
@@ -2241,8 +2322,7 @@ a:focus {
 }
 
 .about-us__chief-info-wrapper {
-  max-width: 35em;
-  margin-left: auto;
+  max-width: 40em;
   display: flex;
   gap: 1.5em;
   align-items: end;
@@ -2250,12 +2330,12 @@ a:focus {
 
 @media (max-width: 1024px) {
   .about-us__chief-info-wrapper {
-    max-width: 29em;
+    max-width: 35em;
   }
 
   .about-us__chief-info::before,
   .about-us__chief-info::after {
-    left: 30%;
+    left: 65%;
   }
 }
 
@@ -2278,8 +2358,9 @@ a:focus {
 
 .about-us__chief-photo {
   display: block;
-  width: 9em;
-  height: 9em;
+  flex-shrink: 0;
+  width: 14em;
+  height: 14em;
   object-fit: cover;
   border-radius: 30px;
 }
@@ -2288,7 +2369,6 @@ a:focus {
   display: flex;
   flex-direction: column;
   gap: 0.75em;
-  color: var(--grass-green);
   text-transform: uppercase;
 }
 
@@ -2297,14 +2377,14 @@ a:focus {
 }
 
 .about-us__chief-info-name {
-  color: var(--txt-dark-green);
+  color: var(--grass-green);
 }
 
 .about-us__chief-info-text .about-us__chief-info-description {
   font-size: 0.75em;
   font-weight: 400;
   text-transform: none;
-  color: var(--txt-dark-green);
+  color: var(--grass-green);
   margin-top: -1em;
 }
 
