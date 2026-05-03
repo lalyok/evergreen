@@ -102,11 +102,11 @@
         </div>
         <?php endif; ?>
       </div>
-    </div>
-    <?php  
+      <?php  
       }
       wp_reset_postdata(); // сброс
-    ?>
+      ?>
+    </div>
   </div>
 </section>
 <?php endif; ?>
