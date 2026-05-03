@@ -12,6 +12,7 @@ get_header();
     ?>
     <?php get_template_part( 'parts/services-slider' ); ?>
     <?php get_template_part( 'parts/why-us' ); ?>
+    <?php get_template_part( 'parts/quiz' ); ?>
     <?php get_template_part( 'parts/how-we-work' ); ?>
     <?php get_template_part( 'parts/partners' ); ?>
     <?php get_template_part( 'parts/before-after' ); ?>

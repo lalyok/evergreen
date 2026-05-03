@@ -1,0 +1,41 @@
+{
+  "services": [
+    { "key": "ozelenenie", "label": "Озеленение придомовых территорий" },
+    { "key": "vosstanovlenie", "label": "Восстановление и уход" },
+    { "key": "podbor", "label": "Подбор и продажа растений" },
+    { "key": "landshaft", "label": "Ландшафтный дизайн" },
+    { "key": "sadovnik", "label": "Услуги садовника" }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "title": "Ваша текущая ситуация:",
+      "answers": [
+        { "id": "q1a1", "text": "У меня пока нет озеленения, хочу сделать с нуля", "keys": ["ozelenenie","landshaft"] },
+        { "id": "q1a2", "text": "Есть растения, но они выглядят плохо", "keys": ["vosstanovlenie"] },
+        { "id": "q1a3", "text": "Есть растения, но нужна помощь с уходом", "keys": ["ozelenenie","sadovnik"] },
+        { "id": "q1a4", "text": "Хочу подобрать и купить новые растения", "keys": ["podbor"] }
+      ]
+    },
+    {
+      "id": "q2",
+      "title": "Какой нужен результат:",
+      "answers": [
+        { "id": "q2a1", "text": "Полностью продуманное и оформленное пространство", "keys": ["ozelenenie","landshaft"] },
+        { "id": "q2a2", "text": "Вернуть растениям здоровый и красивый вид", "keys": ["vosstanovlenie"] },
+        { "id": "q2a3", "text": "Поддерживать ухоженный вид без лишних усилий", "keys": ["ozelenenie","sadovnik"] },
+        { "id": "q2a4", "text": "Просто выбрать подходящие растения под условия", "keys": ["podbor"] }
+      ]
+    },
+    {
+      "id": "q3",
+      "title": "Готовы ли вы заниматься уходом самостоятельно?",
+      "answers": [
+        { "id": "q3a1", "text": "Нет, хочу полностью делегировать уход", "keys": ["vosstanovlenie","landshaft","sadovnik"] },
+        { "id": "q3a2", "text": "Частично — нужен контроль и помощь специалиста", "keys": ["ozelenenie", "sadovnik"] },
+        { "id": "q3a3", "text": "Да, но нужны рекомендации", "keys": ["ozelenenie","podbor","landshaft"] },
+        { "id": "q3a4", "text": "Пока не знаю / зависит от сложности", "keys": ["podbor","landshaft"] }
+      ]
+    }
+  ]
+}

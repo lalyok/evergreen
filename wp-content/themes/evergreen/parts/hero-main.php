@@ -10,7 +10,7 @@ $bg_url = is_array( $bg ) && ! empty( $bg['url'] ) ? $bg['url'] : ( is_string( $
 <section class="section hero hero--main"<?php echo $bg_url ? ' style="background-image: url(' . esc_url( $bg_url ) . ')"' : ''; ?>>
     <div class="container hero__container hero__container--main">
         <div class="hero__content hero__content--main">
-            <h1 class="hero__title hero__title--main"><?php echo esc_html($title); ?></h1>
+            <h1 class="hero__title hero__title--main"><?php echo $title; ?></h1>
 
             <?php if ($subtitle): ?>
                 <p class="hero__lead hero__lead--main"><?php echo esc_html($subtitle); ?></p>

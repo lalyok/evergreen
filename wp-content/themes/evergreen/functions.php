@@ -51,6 +51,14 @@ function evergreen_enqueue_assets() {
 
   wp_enqueue_script( 'evergreen-portfolio-swiper', get_template_directory_uri() . '/assets/js/portfolio-swiper.js', array( 'swiper', 'evergreen-main' ), $theme_version, true );
 
+  // Quiz assets (client-side quiz, pre-generated JSON at assets/data/quiz.json)
+  
+  wp_enqueue_script( 'evergreen-quiz', get_template_directory_uri() . '/assets/js/quiz.js', array( 'evergreen-main' ), $theme_version, true );
+  wp_localize_script( 'evergreen-quiz', 'EvergreenQuiz', array(
+    'dataUrl' => get_template_directory_uri() . '/assets/data/quiz.json',
+    'restBase' => rest_url( 'evergreen/v1/services' ),
+  ) );
+
   // PhotoSwipe CSS
   wp_enqueue_style( 'photoswipe-css', 'https://unpkg.com/photoswipe@5/dist/photoswipe.css', array(), null );
 
@@ -257,3 +265,80 @@ if ( ! function_exists( 'evergreen_handle_contact_form' ) ) {
 
 add_action( 'admin_post_nopriv_evergreen_contact', 'evergreen_handle_contact_form' );
 add_action( 'admin_post_evergreen_contact', 'evergreen_handle_contact_form' );
+
+/**
+ * Shortcode to render quiz container
+ */
+function evergreen_quiz_shortcode( $atts ) {
+  ob_start();
+  get_template_part( 'parts/quiz' );
+  return ob_get_clean();
+}
+add_shortcode( 'evergreen_quiz', 'evergreen_quiz_shortcode' );
+
+/**
+ * REST endpoint: GET /wp-json/evergreen/v1/services
+ * Optional query param: keys (comma-separated quiz_key values) to filter services that contain at least one key.
+ */
+function evergreen_quiz_rest_services( \WP_REST_Request $request ) {
+  $keys = $request->get_param( 'keys' );
+  if ( $keys && ! is_array( $keys ) ) {
+    $keys = array_filter( array_map( 'trim', explode( ',', $keys ) ) );
+  }
+
+  $args = array(
+    'post_type'      => 'service',
+    'posts_per_page' => 100,
+    'post_status'    => 'publish',
+  );
+
+  $posts = get_posts( $args );
+  $out = array();
+
+  foreach ( $posts as $p ) {
+    $quiz_keys = get_field( 'quiz_key', $p->ID );
+    if ( ! $quiz_keys ) {
+      $quiz_keys = array();
+    }
+    // Normalize string -> array
+    if ( ! is_array( $quiz_keys ) ) {
+      $quiz_keys = preg_split( '/[\s,]+/', (string) $quiz_keys );
+      $quiz_keys = array_filter( array_map( 'trim', $quiz_keys ) );
+    }
+
+    if ( $keys && count( $keys ) > 0 ) {
+      $match = false;
+      foreach ( $quiz_keys as $k ) {
+        if ( in_array( $k, $keys, true ) ) {
+          $match = true;
+          break;
+        }
+      }
+      if ( ! $match ) {
+        continue;
+      }
+    }
+
+    $thumb = get_the_post_thumbnail_url( $p->ID, 'medium' ) ?: '';
+    $excerpt = get_the_excerpt( $p->ID );
+
+    $out[] = array(
+      'id'       => $p->ID,
+      'title'    => get_the_title( $p->ID ),
+      'link'     => get_permalink( $p->ID ),
+      'excerpt'  => $excerpt,
+      'thumb'    => $thumb,
+      'quiz_key' => array_values( $quiz_keys ),
+    );
+  }
+
+  return rest_ensure_response( $out );
+}
+
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'evergreen/v1', '/services', array(
+    'methods'  => 'GET',
+    'callback' => 'evergreen_quiz_rest_services',
+    'permission_callback' => '__return_true',
+  ) );
+} );

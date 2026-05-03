@@ -42,9 +42,9 @@ if ( ! empty( $bg_image['url'] ) ) {
             <input class="contact-form__input" type="email" name="email" placeholder="Email">
           </label>
         </div>
-        <label class="contact-form__consent">
-          <input class="contact-form__consent-checkbox visually-hidden" type="checkbox" name="consent" required> 
-          <span class="contact-form__consent-checkmark"></span>
+        <label class="checkbox-label contact-form__consent">
+          <input class="checkbox visually-hidden contact-form__consent-checkbox" type="checkbox" name="consent" required> 
+          <span class="checkmark contact-form__consent-checkmark"></span>
           <p class="contact-form__consent-text">
             Я согласен (-а) с <a href="/privacy-policy" target="_blank">политикой конфиденциальности</a> в отношении пользовательских данных и даю свое согласие на обработку персональных данных.
           </p>
