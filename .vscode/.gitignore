@@ -1,0 +1,18 @@
+# WordPress configs (server-specific)
+wp-config.php
+.htaccess
+
+# Uploads (контент пользователей)
+wp-content/uploads/
+
+# Кэш
+wp-content/cache/
+wp-content/upgrade/
+
+# Логи
+*.log
+debug.log
+
+# OS / IDE
+.DS_Store
+node_modules/
