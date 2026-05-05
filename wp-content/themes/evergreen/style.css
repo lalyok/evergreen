@@ -9,18 +9,6 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: vechnozeleniy-service
 */
 
-/* Базовые сбросы и типографика */
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #fbfbfb;
-  height: 100%;
-}
-
-.site-header, .site-footer {
-  box-sizing: border-box;
-}
-
 @font-face {
   font-family: 'Montserrat';
   src: url('assets/fonts/Montserrat/Montserrat-VariableFont_wght.woff2') format('woff2'), 
@@ -56,7 +44,18 @@ html, body {
   --gradient-green: linear-gradient(180deg, #86B03B 0%, #345200 100%);
 }
 
-/* Better box-sizing model for predictable sizing */
+/* Базовые сбросы и типографика */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  height: 100%;
+}
+
+.site-header, .site-footer {
+  box-sizing: border-box;
+}
+
 html { 
   box-sizing: border-box;
   scroll-behavior: smooth;

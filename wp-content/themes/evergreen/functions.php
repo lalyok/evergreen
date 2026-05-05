@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'evergreen_setup' );
 function evergreen_enqueue_assets() {
   $theme_version = wp_get_theme()->get( 'Version' );
 
-  wp_enqueue_style( 'evergreen-style', get_stylesheet_uri(), array(), $theme_version );
+  wp_enqueue_style( 'evergreen-style', get_stylesheet_uri(), array(), null );
 
   // Swiper (CSS) from CDN
   wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', array(), '9.0' );
