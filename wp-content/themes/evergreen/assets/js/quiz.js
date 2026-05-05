@@ -189,7 +189,7 @@
       const card = createEl('article', { class: 'quiz-card' });
       if (s.thumb) card.appendChild(createEl('img', { src: s.thumb, alt: s.title }));
       const h = createEl('h4', {});
-      const a = createEl('a', { href: s.link, class: 'quiz-link', target: '_blank' }, s.title);
+      const a = createEl('a', { href: s.link, class: 'quiz-link' }, s.title);
       h.appendChild(a);
       card.appendChild(h);
       wrap.appendChild(card);

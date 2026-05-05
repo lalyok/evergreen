@@ -531,6 +531,7 @@ a:focus {
   color: var(--grass-green);
   margin: 0;
   font-weight: 500;
+  line-height: 1;
 }
 
 .hero {
@@ -877,13 +878,13 @@ a:focus {
 
 .services__slider .slider-prev,
 .services__slider .slider-next {
-    margin-top: 173px;
+    margin-top: calc(11em - 17px);
 }
 
 @media (max-width: 1024px) {
   .services__slider .slider-prev,
   .services__slider .slider-next {
-    margin-top: 183px;
+    margin-top: calc(11em - 11px);
   }
 }
 
@@ -1834,7 +1835,7 @@ a:focus {
   position: absolute;
   content: "";
   left: 0;
-  top: 4px;
+  top: calc(50% - 10px);
   width: 20px;
   height: 20px;
   border: 2px solid var(--pale-green);
