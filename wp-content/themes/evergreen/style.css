@@ -582,6 +582,10 @@ a:focus {
     padding-top: 140px;
     padding-bottom: 200px;
   }
+
+  .hero--main {
+    background-position: 60% 0;
+  }
 }
 
 .hero__container {
@@ -678,6 +682,10 @@ a:focus {
 
   .hero__lead {
     font-size: 14px;
+  }
+
+  .hero__lead--main {
+    max-width: 70%;
   }
 }
 
