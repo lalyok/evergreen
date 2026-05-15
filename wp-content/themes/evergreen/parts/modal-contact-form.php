@@ -13,16 +13,16 @@
         </label>
         <label>
         <span class="visually-hidden">Номер телефона</span>
-        <input class="contact-form__input" type="tel" name="phone" placeholder="Номер телефона" required>
+        <input class="contact-form__input" type="tel" name="phone" placeholder="Номер телефона" required minlength="18">
         </label>
         <label>
         <span class="visually-hidden">Email</span>
         <input class="contact-form__input" type="email" name="email" placeholder="Email">
         </label>
       </div>
-      <label class="contact-form__consent">
-        <input class="contact-form__consent-checkbox visually-hidden" type="checkbox" name="consent" required> 
-        <span class="contact-form__consent-checkmark"></span>
+      <label class="checkbox-label contact-form__consent">
+        <input class="checkbox contact-form__consent-checkbox visually-hidden" type="checkbox" name="consent" required> 
+        <span class="checkmark contact-form__consent-checkmark"></span>
         <p class="contact-form__consent-text">
         Я согласен (-а) с <a href="/privacy-policy" target="_blank">политикой конфиденциальности</a> в отношении пользовательских данных и даю свое согласие на обработку персональных данных.
         </p>

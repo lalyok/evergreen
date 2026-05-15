@@ -1108,6 +1108,7 @@ a:focus {
   object-fit: cover; 
   display:block; 
   border-radius: 20px;
+  flex-shrink: 0;
 }
 
 .quiz-card h4{
@@ -1223,14 +1224,10 @@ a:focus {
     left: 0;
     right: 0;
     bottom: 80px;
-  } 
-
-  .service-includes {
-    padding-bottom: 0;
   }
 
   .service-includes::after {
-    bottom: 0;
+    display: none;
   }
 }
 
@@ -2109,7 +2106,6 @@ a:focus {
   display: block;
   border: none;
   font-size: 1.25em;
-  font-weight: 600;
   text-align: center;
 }
 
